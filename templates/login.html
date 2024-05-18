@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            }
+        }
+    });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='_images/simbolo_medo.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+<form action="{{ url_for('login') }}" id="myform">
+    <img src="{{ url_for('static', filename='_images/simbolo_medo.png') }}" id="simbolo_medo" draggable="false">
+    <div id="div_inputs_form">
+        <div class="div_input_form">
+            <div class="icon_area">
+                <i class="icon fa-solid fa-envelope fa"></i>
+            </div>
+            <input class="input_form" id="email" type="email" placeholder="E-mail" required>
+        </div>
+        <div class="div_input_form">
+            <div class="icon_area">
+                <i class="icon fa-solid fa-lock fa"></i>
+            </div>
+            <input class="input_form" id="senha" type="password" placeholder="Senha" required>
+        </div>
+        <div class="div_input_form" id="div_input_nome">
+            <div class="icon_area">
+                <i class="icon fa-solid fa-user fa"></i>
+            </div>
+            <input class="input_form" id="nome" type="text" placeholder="Nome" required>
+        </div>
+    </div>
+    <button id="submit" type="submit" value="registrar">Registrar</button>
+    <div id="div_ja_tem_uma_conta">
+        <span id="ja_tem_uma_conta">Já tem uma conta?</span>
+        <b id="troca_sign_in_sign_up">Sign in</b>
+    </div>
+</form>
+<div id="fantasma_form">
+    <div class="borda_laterais divBordaForm" id="borda_lateral_1"></div>
+    <div class="divBordaForm" id="borda_up_bottom"></div>
+    <div class="borda_laterais divBordaForm" id="borda_lateral_2"></div>
+</div>
+</body>
+</html>
