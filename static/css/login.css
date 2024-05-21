@@ -32,11 +32,10 @@ body {
 #fantasma_form {
     position: relative;
     width: calc(80vw + 8px);
-    height: 60%;
     min-width: 268px;
     max-width: 508px;
-    min-height: 400px;
-    max-height: 700px;
+    min-height: 457px;
+    max-height: 457px;
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -48,11 +47,10 @@ form {
     align-items: center;
     flex-direction: column;
     width: 80%;
-    height: 60%;
     min-width: 260px;
     max-width: 500px;
-    min-height: 400px;
-    max-height: 700px;
+    min-height: 453px;
+    max-height: 453px;
     background: var(--escuro_intenso);
     border-radius: 30px;
     z-index: 1;
@@ -74,9 +72,8 @@ form {
 }
 
 .divBordaForm {
-    height: 60%;
-    min-height: 400px;
-    max-height: 700px;
+    min-height: 453px;
+    max-height: 453px;
     border: 2px solid var(--vibrante);
     z-index: 0;
 }
@@ -133,8 +130,8 @@ form {
     background-color: var(--vibrante);
     color: var(--escuro_leve);
     font-size: 20px;
-    margin-top: 20px;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 #ja_tem_uma_conta {
@@ -158,4 +155,30 @@ form {
     width: fit-content;
     height: fit-content;
     user-select: none;
+}
+
+#senha {
+    border-radius: 0 20px 0 0;
+    border-bottom: 1px solid var(--escuro_leve);
+}
+
+#confirma_senha {
+    height: 29px;
+    border-radius: 0 0 20px 0;
+}
+
+#icon_area_senha {
+    height: 80px;
+    border-radius: 20px 0 0 20px;
+}
+
+#div_input_senha {
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+}
+
+#container_inputs_senha {
+    width: 160px;
+    height: fit-content;
 }

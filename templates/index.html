@@ -1,10 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            }
+        }
+    });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='_images/logo1.png') }}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnigmaTable</title>
 </head>
 <body>
+    <div class="container_tela_principal">
+        <img src="{{ url_for('static', filename='_images/logo_e_nome.png') }}" id="logo_e_nome" class="margin-bottom">
+        <button class="btn_principal margin-bottom" id="btn_abrir_criar_sessao">
+            <span>
+                Criar Sessão
+            </span>
+        </button>
+        <button class="btn_principal margin-bottom" id="btn_abrir_entrar_sessao">
+            <span>
+                Entrar em Sessão
+            </span>
+        </button>
+        <button class="btn_principal margin-bottom">
+            <span>
+                Sair
+            </span>
+        </button>
+    </div>
+    <div id="container_criar_sessão">
+        <div id="barra_criar_sessao" class="barra_container_sessao">
+            <span id="titulo_criar_sessao">Criar Sessão</span>
+            <i class="fa-solid fa-xmark fa icone_x_barra_sessao" id="icone_x_barra_criar_sessao"></i>
+        </div>
+        <div id="nome_e_imagem">
+            <div id="container_imagem_criar_sessao">
+                <img src="{{ url_for('static', filename='_images/no_session_image.png') }}" id="imagem_sessao_criar_sessao">
+                <label for="image_input_criar_sessao_real" id="image_input_criar_sessao_label">+</label>
+                <input type="file" accept="image/jpeg, image/png" id="image_input_criar_sessao_real">
+            </div>
+            <div id="div_inputs_codigo_e_nome_criar_sessao">
+                <div id="container_input_nome_criar_sessao">
+                    <label for="input_nome_criar_sessao" id="input_nome_criar_sessao_label" class="input_principal_criar_sessao_label">Nome da Sessão</label>
+                    <input type="text" id="input_nome_criar_sessao" class="input_principal_criar_sessao" placeholder="Nome da Sessão">
+                </div>
+                <div id="container_input_senha_criar_sessao">
+                    <label for="input_nome_criar_sessao" id="input_senha_criar_sessao_label" class="input_principal_criar_sessao_label">Senha da Sessão</label>
+                    <input type="text" id="input_senha_criar_sessao" class="input_principal_criar_sessao" placeholder="Senha da Sessão">
+                </div>
+            </div>
+        </div>
+        <div id="container_criar_sessao_customizacao">
+            <div id="barra_customizacao">
+                <i class="fa-solid fa-paintbrush" id="icone_pincel_criar_sessao"></i>
+                <span id="titulo_customizacao_criar_sessao">Customização</span>
+            </div>
+            <div id="div_input_color_criar_sessao">
+                <div id="subdiv_input_color_criar_sessao">
+                    <input type="color" id="input_color_criar_sessao" value="#357de6">
+                    <div id="div_input_hex_code_criar_sessao">
+                        <label for="input_hex_code_criar_sessao" id="input_hex_code_criar_sessao_label">Cor principal</label>
+                        <input type="text" id="input_hex_code_criar_sessao" value="#357de6">
+                    </div>
+                </div>
+                <span id="comentario_input_hex_code_criar_sessao">*Clique no símbolo para abrir o seletor de cores.</span>
+            </div>
+        </div>
+        <button id="btn_confirmar_criar_sessao" disabled>Criar</button>
+    </div>
+    <div class="container_entrar_sessao">
+        <div class="barra_container_sessao" id="barra_entrar_sessao">
+            <span>Sessões</span>
+            <i class="fa-solid fa-xmark fa icone_x_barra_sessao" id="icone_x_barra_entrar_sessao"></i>
+        </div>
+        <div id="seçao_suas_sessoes" class="seçao_entrar_sessao">
+            <div id="barra_entrar_sessao_suas_sessoes" class="sub_barra_entrar_sessao">
+                <span id="texto_barra_entrar_sessao_suas_sessoes">Suas Sessões</span>
+            </div>
+            <div class="div_sessao">
+                <img src="{{ url_for('static', filename='_images/no_session_image.png') }}" class="imagem_sessao">
+                <span class="nome_sessao">Nome</span>
+                <button class="btn_entrar_sessao">Entrar</button>
+                <i class="fa-solid fa-trash-can fa icone_div_sessao icone_lixo_entrar_sessao"></i>
+            </div>
+        </div>
+        <div id="seçao_entrar_em_uma_sessao" class="seçao_entrar_sessao">
+            <div id="barra_entrar_em_uma_sessao" class="sub_barra_entrar_sessao">
+                <span id="texto_barra_entrar_em_uma_sessao">Entrar Em Uma Sessão</span>
+            </div>
+            <div id="elementos_form_entrar_em_uma_seçao">
+                <label for="input_codigo_entrar_em_uma_seçao" id="input_codigo_entrar_em_uma_seçao_label">Código</label>
+                <input type="text" id="input_codigo_entrar_em_uma_seçao" placeholder="Código">
+                <button id="btn_entrar_em_uma_seçao">Entrar</button>
+            </div>
+        </div>
 
+    </div>
 </body>
 </html>

@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <script src="{{ url_for('static', filename='js/login.js') }}" defer></script>
-    <link rel="icon" href="{{ url_for('static', filename='_images/simbolo_medo.png') }}">
+    <link rel="icon" href="{{ url_for('static', filename='_images/icone.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 </head>
 <body>
-<form action="{{ url_for('login') }}" id="myform">
-    <img src="{{ url_for('static', filename='_images/simbolo_medo.png') }}" id="simbolo_medo" draggable="false">
+<form action="{{ url_for('auth.login') }}" id="myform">
+    <img src="{{ url_for('static', filename='_images/logo1.png') }}" id="simbolo_medo" draggable="false">
     <div id="div_inputs_form">
         <div class="div_input_form">
             <div class="icon_area">
@@ -31,11 +31,14 @@
             </div>
             <input class="input_form" id="email" type="email" placeholder="E-mail" required>
         </div>
-        <div class="div_input_form">
-            <div class="icon_area">
+        <div class="div_input_form" id="div_input_senha">
+            <div class="icon_area" id="icon_area_senha">
                 <i class="icon fa-solid fa-lock fa"></i>
             </div>
-            <input class="input_form" id="senha" type="password" placeholder="Senha" required>
+            <div id="container_inputs_senha">
+                <input class="input_form" id="senha" type="password" placeholder="Senha" minlength="6" required>
+                <input class="input_form" id="confirma_senha" type="password" placeholder="Confirme Sua Senha" minlength="6" required>
+            </div>
         </div>
         <div class="div_input_form" id="div_input_nome">
             <div class="icon_area">
