@@ -1,0 +1,663 @@
+:root {
+    --escuro_intenso: #262b33;
+    --escuro_leve: #35383c;
+    --ton_medio: #4a5566;
+    --claro_leve: #526b91;
+    --claro_medio: #4a77bb;
+    --vibrante: #357de6;
+    --arrow-icon: url("/static/_images/arrow-sort-fa.png");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    user-select: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background: var(--escuro_intenso);
+}
+
+#ficha {
+    position: absolute;
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: var(--escuro_leve);
+}
+
+#ficha_puxador {
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(90deg, var(--escuro_intenso) 0% 1%, var(--escuro_leve) 99% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#ficha_puxador span {
+    width: 8px;
+    height: 4px;
+    background-color: var(--claro_medio);
+    margin-bottom: 5px;
+}
+
+#ficha_puxador span:last-child {
+    margin-bottom: 0px;
+}
+
+#ficha_conteudo {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw;
+    height: 100%;
+    justify-content: space-between;
+}
+
+#barra_escolha_seçao_ficha_conteudo {
+    height: 37px;
+    display: flex;
+    background-color: var(--escuro_intenso);
+    color: var(--vibrante);
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#opcoes_barra_escolha_seçao_ficha_conteudo {
+    text-align: center;
+}
+
+.enfeite_entre_nomes_barra_conteudo_ficha {
+    display: inline-block;
+    width: 5px;
+    background: radial-gradient(circle, var(--claro_medio) 0 18.5%, transparent 18.5% 100%);
+}
+
+#div_demarcacao_escolha_barra_conteudo_ficha {
+    display: grid;
+}
+
+#demarcacao_escolha_barra_conteudo_ficha {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--claro_medio);
+    border-radius: 100px;
+    margin-top: -2px;
+}
+
+#grid_secoes_ficha {
+    display: grid;
+    height: calc(100vh - 37px);
+    width: 100%;
+    overflow-y: hidden;
+    grid-template-rows: calc(100vh - 37px) 0px 0px;
+}
+
+#secao_ficha_atributos {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    z-index: 1;
+    grid-row: 1;
+}
+
+#secao_atributos_e_defesa_ficha {
+    width: 48%;
+}
+
+#secao_atributos_status {
+    height: 100%;
+    overflow-y: auto;
+    width: 49%;
+    background-color: var(--claro_medio);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_pontos_de_status {
+    background-color: var(--escuro_intenso);
+    margin-bottom: 20px;
+    width: 90%;
+    padding: 2.5%;
+    border-radius: 30px;
+}
+
+.div_pontos_de_status:first-child{
+    margin-top: 10px;
+}
+
+.secao_superior_div_pontos_de_status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.secao_superior_div_pontos_de_status span:first-of-type {
+    font-size: 20px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: var(--vibrante);
+}
+
+.secao_superior_div_pontos_de_status div:first-of-type {
+    width: 50%;
+    height: 15px;
+    background: var(--vibrante);
+    text-align: center;
+    border-radius: 100px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    color: var(--escuro_intenso);
+}
+
+.secao_cetral_div_pontos_de_status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.barra_divisora_pontos_de_status {
+    width: 95%;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 5px;
+    color: var(--claro_medio);
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.div_btns_modo_rapido_pontos_de_status {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.btn_modo_rapido_pontos_de_status {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: "Merriweather";
+    font-weight: 900;
+    background-color: var(--claro_medio);
+    color: var(--escuro_leve);
+}
+
+.traço_divisor_pontos_de_status {
+    width: 100%;
+    height: 5px;
+    border-radius: 100px;
+    background-color: var(--claro_medio);
+    align-self: center;
+}
+
+.secao_inferior_div_pontos_de_status {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_modifica_customizado_pontos_de_status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.input_modifica_pontos_de_status {
+    -moz-appearance: textfield;
+    width: 20%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    font-size: 17px;
+    font-family: "Merriweather";
+    font-weight: 900;
+    background-color: var(--ton_medio);
+}
+
+.input_modifica_pontos_de_status::-webkit-outer-spin-button,
+.input_modifica_pontos_de_status::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.traço_estetico_modifica_customizado_pontos_de_status {
+    display: block;
+    width: 3px;
+    border-radius: 100px;
+    background-color: var(--escuro_leve);
+    height: 21px;
+}
+
+.btn_aplica_modificacao_pontos_de_status {
+    height: 100%;
+    width: 35%;
+    border-radius: 1000px;
+    font-size: 17px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    margin-left: 5px;
+    background-color: var(--claro_medio);
+    color: var(--escuro_intenso);
+}
+
+#secao_atributos_e_defesa_ficha {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#box-padding_imagem_atributos {
+    width: 95%;
+    background-color: var(--escuro_intenso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+#secao_atributos_ficha_defesa {
+    border-radius: 20px;
+    background-color: var(--escuro_intenso);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 95%;
+
+}
+
+#secao_atributos_ficha_defesa span {
+    font-size: 20px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    padding: 5px;
+    color: var(--vibrante);
+}
+
+#secao_atributos_ficha_atributos {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url('/static/_images/atributos3.png');
+    background-size: cover;
+}
+
+.valor_atributo_ficha {
+    display: block;
+    text-align: center;
+    width: 29.8%;
+    color: var(--vibrante);
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "Merriweather", serif;
+    background: radial-gradient(circle, var(--escuro_intenso) 0% 20%, transparent 30% 100%);
+}
+
+#secao_atributos_divisor1 {
+    height: 6.8%;
+    width: 100%;
+}
+
+#secao_atributos_fileira1 {
+    height: 16.2%;
+    width: 100%;
+    justify-content: center;
+}
+
+#secao_atributos_fileira2 {
+    height: 29.8%;
+    width: 100%;
+}
+
+#secao_atributos_fileira2 span:first-child {
+    margin-left: 0.6%;
+}
+
+#secao_atributos_divisor2 {
+    height: 9.6%;
+    width: 100%;
+}
+
+#secao_atributos_fileira3 {
+    height: 29.8%;
+    width: 100%;
+}
+
+#secao_atributos_fileira3 span:first-child {
+    margin-left: 7.9%;
+}
+
+.sub_secao_atributos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#divisoria_secao_atributos_fileira2 {
+    width: 39.1%;
+}
+
+#divisoria_secao_atributos_fileira3 {
+    width: 24.5%
+}
+
+#secao_ficha_habilidades {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: end;
+    justify-content: space-evenly;
+}
+
+.secao_habilidade_ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32%;
+    background-color: var(--ton_medio);
+    border-radius: 20px 20px 0px 0px;
+    height: 95%;
+    overflow-y: auto;
+}
+
+.label_titulo_secao_habilidades {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: whitesmoke;
+
+}
+
+/* <select> styles */
+#select_tipo_pericias {
+    box-sizing: border-box;
+    /* Reset */
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
+    width: 90%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 5px;
+    background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+      linear-gradient(to left, var(--escuro_intenso) 3em, var(--escuro_leve) 3em);
+    color: var(--claro_medio);
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    /* Remove IE arrow */
+    &::-ms-expand {
+      display: none;
+    }
+    /* Remove focus outline */
+    &:focus {
+      outline: none;
+    }
+    /* <option> colors */
+}
+
+.option_tipo_pericia {
+    box-sizing: border-box;
+    color: whitesmoke;
+    background-color: var(--claro_medio);
+  }
+
+.div_pericia_ficha_conteudo {
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: whitesmoke;
+    padding: 3px;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-top: 5px;
+}
+
+.div_pericia_ficha_conteudo:nth-child(odd) {
+    background-color: var(--claro_leve);
+}
+
+.div_pericia_ficha_conteudo:nth-child(even) {
+    background-color: var(--claro_medio);
+}
+
+.div_pericia_ficha_conteudo span:first-child {
+    margin-left: 5px;
+}
+
+.div_pericia_ficha_conteudo span:last-child {
+    margin-right: 5px;
+    background-color: var(--escuro_intenso);
+    border-radius: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.div_habilidade_ficha_conteudo {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 6px;
+}
+
+.label_habilidade_ficha_conteudo {
+    width: 100%;
+    background-color: var(--escuro_intenso);
+    font-size: 20px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: var(--vibrante);
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.label_habilidade_ficha_conteudo i {
+    color: var(--ton_medio);
+    margin-left: 8px;
+    transition: transform 200ms;
+}
+
+.detalhes_ritual_ficha {
+    width: 100%;
+    background-color: var(--claro_medio);
+    border-radius: 0 0 10px 10px;
+    visibility: hidden;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.detalhes_habilidade_ficha.active {
+    max-height: 300px; /* Defina um valor alto o suficiente para seu conteúdo */
+    opacity: 1;
+    visibility: visible;
+}
+
+.secao_detalhes_simples_ritual_ficha {
+    width: 93%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+    background-color: var(--claro_leve);
+    margin-top: 8px;
+    box-shadow: 0 0 6px -1px var(--escuro_intenso);
+}
+
+.div_detalhe_simples_ritual_ficha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 3px;
+}
+
+.secao_detalhes_simples_ritual_ficha .div_detalhe_simples_ritual_ficha:nth-child(even) {
+    background-color: var(--ton_medio);
+}
+
+.div_detalhe_simples_ritual_ficha:first-child {
+    padding-top: 0px;
+}
+
+.div_detalhe_simples_ritual_ficha span:first-child {
+    margin-left: 8px;
+}
+
+.div_detalhe_simples_ritual_ficha span:last-child {
+    margin-right: 8px;
+}
+
+.label_detalhe_habilidade_ficha {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+}
+
+.secao_detalhes_descricao_habilidade_ficha {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    margin-top: 5px;
+}
+
+.secao_detalhes_descricao_habilidade_ficha span {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 8px;
+}
+
+.secao_detalhes_descricao_habilidade_ficha textarea {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    align-self: center;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: var(--escuro_intenso);
+    color: var(--vibrante);
+    resize: none;
+    height: 50px;
+    font-weight: bold;
+    padding: 5px;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.secao_aprimoramentos_descricao_ritual_ficha {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.div_aprimoramento_info_ficha {
+    background-color: var(--escuro_intenso);
+    padding-bottom: 1px;
+    padding-top: 1px;
+    border-radius: 100px;
+    width: 85%;
+    color: var(--vibrante);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.div_aprimoramento_info_ficha span {
+    margin-right: 5px;
+    color: whitesmoke;
+}
+
+.secao_aprimoramentos_descricao_ritual_ficha div:last-child{
+    margin-top: 3px;
+}
+
+.detalhes_poder_ficha {
+    width: 100%;
+    background-color: var(--claro_medio);
+    border-radius: 0 0 10px 10px;
+    visibility: hidden;
+    transition: max-height 0.2s ease-out;
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.div_custo_poder_ficha {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.div_custo_poder_ficha span:last-child {
+    background-color: var(--escuro_intenso);
+    color: var(--vibrante);
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 100px;
+}

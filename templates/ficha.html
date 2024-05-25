@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var csrf_token = "{{ csrf_token() }}";
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            }
+        }
+    });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ficha.css') }}">
+    <script src="{{ url_for('static', filename='js/ficha.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='_images/logo1.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha</title>
+</head>
+<body>
+    <div id="ficha">
+        <div id="ficha_puxador">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div id="ficha_conteudo">
+            <div id="barra_escolha_seçao_ficha_conteudo">
+                <div id="opcoes_barra_escolha_seçao_ficha_conteudo">
+                    <span class="nome_secao_conteudo_ficha" id="opcao_barra_escolha_seçao_ficha_atributo">Atributos</span>
+                    <span class="enfeite_entre_nomes_barra_conteudo_ficha">ㅤ</span>
+                    <span class="nome_secao_conteudo_ficha" id="opcao_barra_escolha_seçao_ficha_habilidades">Habilidades</span>
+                    <span class="enfeite_entre_nomes_barra_conteudo_ficha">ㅤ</span>
+                    <span class="nome_secao_conteudo_ficha" id="opcao_barra_escolha_seçao_ficha_inventario">Inventário</span>
+                </div>
+                <div id="div_demarcacao_escolha_barra_conteudo_ficha">
+                    <span id="demarcacao_escolha_barra_conteudo_ficha"></span>
+                </div>
+            </div>
+            <div id="grid_secoes_ficha">
+                <div id="secao_ficha_atributos">
+                <div id="secao_atributos_status">
+                    <div id="div_pontos_de_vida" class="div_pontos_de_status">
+                        <div id="secao_superior_div_pontos_de_vida" class="secao_superior_div_pontos_de_status">
+                            <span id="label_vida">Vida</span>
+                            <div id="barra_pontos_de_vida">222/222</div>
+                        </div>
+                        <div id="secao_cetral_div_pontos_de_vida" class="secao_cetral_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Rápido</span>
+                                <i class="fa-solid fa-wind fa icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_btns_modo_rapido_pontos_de_status">
+                                <button id="soma_1_pontos_de_vida" class="btn_modo_rapido_pontos_de_status">+1</button>
+                                <button id="soma_10_pontos_de_vida" class="btn_modo_rapido_pontos_de_status">+10</button>
+                                <button id="subtrai_1_pontos_de_vida" class="btn_modo_rapido_pontos_de_status">-1</button>
+                                <button id="subtrai_10_pontos_de_vida" class="btn_modo_rapido_pontos_de_status">-10</button>
+                            </div>
+                        </div>
+                        <div id="secao_inferior_div_pontos_de_vida" class="secao_inferior_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Customizado</span>
+                                <i class="fa-solid fa-pencil icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_modifica_customizado_pontos_de_status">
+                                <input type="number" placeholder="Dano" id="input_dano_pontos_de_vida" class="input_dano_pontos_de_status input_modifica_pontos_de_status">
+                                <div class="traço_estetico_modifica_customizado_pontos_de_status"></div>
+                                <input type="number" placeholder="Cura" id="input_cura_pontos_de_vida" class="input_cura_pontos_de_status input_modifica_pontos_de_status">
+                                <button id="btn_aplica_modificacao_pontos_de_vida" class="btn_aplica_modificacao_pontos_de_status">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_pontos_de_sanidade" class="div_pontos_de_status">
+                        <div id="secao_superior_div_pontos_de_sanidade" class="secao_superior_div_pontos_de_status">
+                            <span id="label_sanidade">Sanidade</span>
+                            <div id="barra_pontos_de_sanidade">222/222</div>
+                        </div>
+                        <div id="secao_cetral_div_pontos_de_sanidade" class="secao_cetral_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Rápido</span>
+                                <i class="fa-solid fa-wind fa icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_btns_modo_rapido_pontos_de_status">
+                                <button id="soma_1_pontos_de_sanidade" class="btn_modo_rapido_pontos_de_status">+1</button>
+                                <button id="soma_10_pontos_de_sanidade" class="btn_modo_rapido_pontos_de_status">+10</button>
+                                <button id="subtrai_1_pontos_de_sanidade" class="btn_modo_rapido_pontos_de_status">-1</button>
+                                <button id="subtrai_10_pontos_de_sanidade" class="btn_modo_rapido_pontos_de_status">-10</button>
+                            </div>
+                        </div>
+                        <div id="secao_inferior_div_pontos_de_sanidade" class="secao_inferior_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Customizado</span>
+                                <i class="fa-solid fa-pencil icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_modifica_customizado_pontos_de_status">
+                                <input type="number" placeholder="Dano" id="input_dano_pontos_de_sanidade" class="input_dano_pontos_de_status input_modifica_pontos_de_status">
+                                <div class="traço_estetico_modifica_customizado_pontos_de_status"></div>
+                                <input type="number" placeholder="Cura" id="input_cura_pontos_de_sanidade" class="input_cura_pontos_de_status input_modifica_pontos_de_status">
+                                <button id="btn_aplica_modificacao_pontos_de_sanidade" class="btn_aplica_modificacao_pontos_de_status">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_pontos_de_esforco" class="div_pontos_de_status">
+                        <div id="secao_superior_div_pontos_de_esforco" class="secao_superior_div_pontos_de_status">
+                            <span id="label_pontos_de_esforco">PE</span>
+                            <div id="barra_pontos_de_esforco">222/222</div>
+                        </div>
+                        <div id="secao_cetral_div_pontos_de_esforco" class="secao_cetral_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Rápido</span>
+                                <i class="fa-solid fa-wind fa icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_btns_modo_rapido_pontos_de_status">
+                                <button id="soma_1_pontos_de_esforco" class="btn_modo_rapido_pontos_de_status">+1</button>
+                                <button id="soma_10_pontos_de_esforco" class="btn_modo_rapido_pontos_de_status">+10</button>
+                                <button id="subtrai_1_pontos_de_esforco" class="btn_modo_rapido_pontos_de_status">-1</button>
+                                <button id="subtrai_10_pontos_de_esforco" class="btn_modo_rapido_pontos_de_status">-10</button>
+                            </div>
+                        </div>
+                        <div id="secao_inferior_div_pontos_de_esforco" class="secao_inferior_div_pontos_de_status">
+                            <div class="barra_divisora_pontos_de_status">
+                                <span class="label_modo_rapido_pontos_de_status">Modo Customizado</span>
+                                <i class="fa-solid fa-pencil icone_pontos_de_status"></i>
+                                <div class="traço_divisor_pontos_de_status"></div>
+                            </div>
+                            <div class="div_modifica_customizado_pontos_de_status">
+                                <input type="number" placeholder="Dano" id="input_dano_pontos_de_esforco" class="input_dano_pontos_de_status input_modifica_pontos_de_status">
+                                <div class="traço_estetico_modifica_customizado_pontos_de_status"></div>
+                                <input type="number" placeholder="Cura" id="input_cura_pontos_de_esforco" class="input_cura_pontos_de_status input_modifica_pontos_de_status">
+                                <button id="btn_aplica_modificacao_pontos_de_esforco" class="btn_aplica_modificacao_pontos_de_status">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="secao_atributos_e_defesa_ficha">
+                    <div id="box-padding_imagem_atributos">
+                        <div id="secao_atributos_ficha_atributos">
+                            <div id="secao_atributos_divisor1" class="sub_secao_atributos"></div>
+                            <div id="secao_atributos_fileira1" class="sub_secao_atributos">
+                                <span class="valor_atributo_ficha">1</span>
+                            </div>
+                            <div id="secao_atributos_fileira2" class="sub_secao_atributos">
+                                <span class="valor_atributo_ficha">1</span>
+                                <div id="divisoria_secao_atributos_fileira2"></div>
+                                <span class="valor_atributo_ficha">1</span>
+                            </div>
+                            <div id="secao_atributos_divisor2" class="sub_secao_atributos"></div>
+                            <div id="secao_atributos_fileira3" class="sub_secao_atributos">
+                                <span class="valor_atributo_ficha">1</span>
+                                <div id="divisoria_secao_atributos_fileira3"></div>
+                                <span class="valor_atributo_ficha">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="secao_atributos_ficha_defesa">
+                        <span>Defesa:</span>
+                        <span>99</span>
+                    </div>
+                </div>
+            </div>
+                <div id="secao_ficha_habilidades" style="opacity: 0;z-index: 0">
+                    <div class="secao_habilidade_ficha" id="secao_pericias_ficha">
+                        <span class="label_titulo_secao_habilidades">Perícias</span>
+                        <select id="select_tipo_pericias">
+                            <option class="option_tipo_pericia" selected value="todas">Todas</option>
+                            <option class="option_tipo_pericia" value="t">Treinado</option>
+                            <option class="option_tipo_pericia" value="v">Veterano</option>
+                            <option class="option_tipo_pericia" value="e">Expert</option>
+                            <option class="option_tipo_pericia" value="nt">Não Treinado</option>
+                        </select>
+                        <div class="div_pericia_ficha_conteudo nt">
+                            <span class="nome_pericia_ficha_conteudo">Lorem Ipsum</span>
+                            <span class="nivel_pericia_ficha_conteudo">+0</span>
+                        </div>
+                        <div class="div_pericia_ficha_conteudo t">
+                            <span class="nome_pericia_ficha_conteudo">Lorem Ipsum</span>
+                            <span class="nivel_pericia_ficha_conteudo">+5</span>
+                        </div>
+                        <div class="div_pericia_ficha_conteudo v">
+                            <span class="nome_pericia_ficha_conteudo">Lorem Ipsum</span>
+                            <span class="nivel_pericia_ficha_conteudo">+10</span>
+                        </div>
+                        <div class="div_pericia_ficha_conteudo e">
+                            <span class="nome_pericia_ficha_conteudo">Lorem Ipsum</span>
+                            <span class="nivel_pericia_ficha_conteudo">+15</span>
+                        </div>
+                    </div>
+                    <div class="secao_habilidade_ficha" id="secao_rituais_ficha">
+                        <span class="label_titulo_secao_habilidades">Rituais</span>
+                        <div class="div_ritual_ficha_conteudo div_habilidade_ficha_conteudo">
+                            <div class="label_ritual_ficha_conteudo label_habilidade_ficha_conteudo">
+                                <i class="fa-solid fa-chevron-down fa icone_seta_label_ficha"></i>
+                                <span>Lorem Ipsum</span>
+                            </div>
+                            <div class="detalhes_ritual_ficha detalhes_habilidade_ficha">
+                                <div class="secao_detalhes_simples_ritual_ficha">
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Custo:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">99 PE</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Execução:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Padrão</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Alcance:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Toque</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Alvo:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">1 Arma</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Duração:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Sustentada</span>
+                                    </div>
+                                </div>
+                                <div class="secao_detalhes_descricao_ritual_ficha secao_detalhes_descricao_habilidade_ficha">
+                                    <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Descrição:</span>
+                                    <textarea class="textarea_descricao_detalhe_ritual_ficha" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                                </div>
+                                <div class="secao_aprimoramentos_descricao_ritual_ficha">
+                                    <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Aprimoramentos:</span>
+                                    <div class="div_aprimoramento_info_ficha">
+                                        <span>Discente</span>
+                                        <i class="fa fa-solid fa-circle-info icone_info_aprimoramento_ritual_ficha"></i>
+                                    </div>
+                                    <div class="div_aprimoramento_info_ficha">
+                                        <span>Verdadeiro</span>
+                                        <i class="fa-solid fa-circle-info fa icone_info_aprimoramento_ritual_ficha"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div_ritual_ficha_conteudo div_habilidade_ficha_conteudo">
+                            <div class="label_ritual_ficha_conteudo label_habilidade_ficha_conteudo">
+                                <i class="fa-solid fa-chevron-down fa icone_seta_label_ficha"></i>
+                                <span>Lorem Ipsum</span>
+                            </div>
+                            <div class="detalhes_ritual_ficha detalhes_habilidade_ficha">
+                                <div class="secao_detalhes_simples_ritual_ficha">
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Custo:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">99 PE</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Execução:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Padrão</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Alcance:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Toque</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Alvo:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">1 Arma</span>
+                                    </div>
+                                    <div class="div_detalhe_simples_ritual_ficha">
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Duração:</span>
+                                        <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Sustentada</span>
+                                    </div>
+                                </div>
+                                <div class="secao_detalhes_descricao_ritual_ficha secao_detalhes_descricao_habilidade_ficha">
+                                    <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Descrição:</span>
+                                    <textarea class="textarea_descricao_detalhe_ritual_ficha" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                                </div>
+                                <div class="secao_aprimoramentos_descricao_ritual_ficha">
+                                    <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Aprimoramentos:</span>
+                                    <div class="div_aprimoramento_info_ficha">
+                                        <span>Discente</span>
+                                        <i class="fa fa-solid fa-circle-info icone_info_aprimoramento_ritual_ficha"></i>
+                                    </div>
+                                    <div class="div_aprimoramento_info_ficha">
+                                        <span>Verdadeiro</span>
+                                        <i class="fa-solid fa-circle-info fa icone_info_aprimoramento_ritual_ficha"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="secao_habilidade_ficha" id="secao_poderes_ficha">
+                        <span class="label_titulo_secao_habilidades">Poderes</span>
+                        <div class="div_poder_ficha_conteudo div_habilidade_ficha_conteudo">
+                            <div class="label_poder_ficha_conteudo label_habilidade_ficha_conteudo">
+                                <i class="fa-solid fa-chevron-down fa icone_seta_label_ficha"></i>
+                                <span>Lorem Ipsum</span>
+                            </div>
+                            <div class="detalhes_poder_ficha detalhes_habilidade_ficha">
+                                <div class="div_custo_poder_ficha">
+                                    <span class="label_detalhe_habilidade_ficha">Custo</span>
+                                    <span class="label_detalhe_habilidade_ficha">99 PE</span>
+                                </div>
+                                <div class="secao_detalhes_descricao_poder_ficha secao_detalhes_descricao_habilidade_ficha">
+                                    <span class="label_detalhe_simples_ritual_ficha label_detalhe_habilidade_ficha">Descrição:</span>
+                                    <textarea class="textarea_descricao_detalhe_poder_ficha" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="secao_ficha_inventario" style="opacity: 0;z-index: 0">ARAUCARIA JAPONESA</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

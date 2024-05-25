@@ -87,7 +87,7 @@ body {
     flex-direction: column;
     opacity: 0;
     transition: 100ms;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 .div_sessao {
@@ -183,7 +183,7 @@ body {
     font-weight: bold;
     width: 95vw;
     min-width: 245px;
-    max-width: 600px;
+    max-width: 616px;
     color: var(--ton_medio);
     background-color: var(--escuro_intenso);
     display: flex;
@@ -220,6 +220,7 @@ body {
     height: 20%;
     min-height: 230px;
     z-index: 3;
+    overflow: hidden;
 }
 
 #elementos_form_entrar_em_uma_seçao {
@@ -522,16 +523,16 @@ body {
     }
 
     .input_principal_criar_sessao_label {
-        font-size: 28px;
+        font-size: 24px;
     }
     
     .input_principal_criar_sessao {
-        padding: 20px;
-        font-size: 25px;
-        width: 250px;
+        padding: 12px;
+        font-size: 23px;
+        width: 210px;
     }
     #container_input_nome_criar_sessao {
-        width: 300px;
+        width: 234px;
     }
     
     #icone_pincel_criar_sessao {

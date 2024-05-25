@@ -16,6 +16,12 @@ from auth import auth_bp
 app.register_blueprint(auth_bp, url_prefix='/auth')
 
 
+@app.route("/ficha", methods=["GET", "POST"])
+@login_required
+def ficha():
+    return render_template("ficha.html")
+
+
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
