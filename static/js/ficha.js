@@ -1,4 +1,5 @@
 const seção_ficha = $("#ficha")
+const seção_conteudo_ficha = $("#ficha_conteudo")
 const puxador_ficha = $("#ficha_puxador")
 const secao_atributos_imagem = $("#secao_atributos_ficha_atributos")
 
@@ -21,9 +22,11 @@ const select_categoria_pericias = $("#select_tipo_pericias")
 
 const secao_pericias_ficha = $("#secao_pericias_ficha")
 
+var altura_ficha
+
 const apertou_puxador = (tipo_evento) => {
-    const larguraTela = window.innerWidth;
-    let offSet = parseInt(seção_ficha.css("width"))
+    const altura_tela = window.innerHeight;
+    let offSet = parseInt(seção_conteudo_ficha.css("height"))
 
     let mexeu, soltou
 
@@ -41,19 +44,16 @@ const apertou_puxador = (tipo_evento) => {
         if (tipo_evento == "touch") {
             e = e.touches[0]
         }
-        let x = e.clientX
-        let x_processado
 
-        if (x <= 10) {
-            x_processado = 10 - offSet
-        } else if (x >= offSet) {
-            x_processado = 0
-        } else if (x >= larguraTela) {
-            x_processado = larguraTela - offSet
-        } else {
-            x_processado = e.clientX - offSet
+        let y = e.clientY
+        let y_processado = altura_tela - y - offSet
+
+        if (y_processado > 0) {
+            y_processado = 0
+        } else if (y_processado < -offSet) {
+            y_processado = - offSet
         }
-        seção_ficha.css("left", x_processado)
+        seção_ficha.css("bottom", y_processado)
     }
 
     function soltou_puxador() {
@@ -67,11 +67,7 @@ const apertou_puxador = (tipo_evento) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let largura_ficha = parseFloat(seção_ficha.css("width").replace("px", ""))
-    let largura_secao_atributos_imagem = parseFloat(secao_atributos_imagem.css("width").replace("px", ""))
-
-    seção_ficha.css("left", -(largura_ficha-10))
-    secao_atributos_imagem.css("height", largura_secao_atributos_imagem)
+    altura_ficha = parseFloat(seção_conteudo_ficha.css("height").replace("px", ""))
 
     let largura_label_atributos_escolhe_secao = label_atributos_barra_escolhe_secao_ficha.css("width")
     let largura_label_habilidades_escolhe_secao = label_habilidades_barra_escolhe_secao_ficha.css("width")
@@ -82,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     grid_demarcacao_barra_escolhe_secao_ficha.css("gap", 5)
     grid_demarcacao_barra_escolhe_secao_ficha.css("grid-template-columns", largura_label_atributos_escolhe_secao + " " + largura_enfeite_barra_escolhe_secao + " " + largura_label_habilidades_escolhe_secao + " " + largura_enfeite_barra_escolhe_secao + " " + largura_label_inventario_escolhe_secao)
     demarcacao_barra_escolhe_secao_ficha.css("grid-column", 1)
+
+    seção_ficha.css("bottom", -altura_ficha)
+    console.log(altura_ficha)
 })
 
 const mudar_conteudo_ficha = (conteudo_a_mostrar) => {
