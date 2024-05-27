@@ -30,6 +30,7 @@ body {
     position: absolute;
     height: fit-content;
     width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     background-color: var(--escuro_leve);
@@ -321,11 +322,11 @@ body {
     display: block;
     text-align: center;
     width: 29.8%;
-    color: var(--vibrante);
-    font-size: 35px;
+    color: var(--escuro_intenso);
+    font-size: 26px;
     font-weight: bold;
-    font-family: "Merriweather", serif;
-    background: radial-gradient(circle, var(--escuro_intenso) 0% 20%, transparent 30% 100%);
+    font-family: "REM", serif;
+    background: radial-gradient(circle, var(--vibrante) 0% 20%, transparent 30% 100%);
 }
 
 #secao_atributos_divisor1 {
@@ -663,4 +664,253 @@ body {
     padding-top: 1px;
     padding-bottom: 1px;
     border-radius: 100px;
+}
+
+#secao_ficha_inventario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#div_inventario_ficha {
+    width: 95%;
+    height: 60%;
+    border-radius: 20px;
+    background-color: var(--claro_leve);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#secao_inventario_limites_ficha span {
+    font-size: 14px;
+    color: whitesmoke;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+}
+
+#div_inventario_ficha .titulo, #div_anotacoes_inventario_ficha .titulo {
+    font-size: 20px;
+    color: whitesmoke;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+    display: grid;
+    align-items: center;
+}
+
+#div_inventario_ficha .titulo {
+    grid-template-columns: 1fr auto;
+    margin-top: 10px;
+}
+
+#div_inventario_ficha .titulo i {
+    background: radial-gradient(circle, var(--vibrante) 0% 50%, transparent 50% 100%);
+    color: var(--escuro_intenso);
+    width: fit-content;
+    margin-right: 10px;
+    font-size: 40px;
+}
+
+#secao_inventario_limites_ficha {
+    width: fit-content;
+    height: fit-content;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--escuro_intenso);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#secao_inventario_limites_ficha .div_limite_generico {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#div_limite_categorias_ficha {
+    padding-right: 10px;
+    border-right: 3px solid var(--claro_leve);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.limites_de_cada_categoria {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.div_limite_categoria_ficha {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    height: fit-content;
+    margin-left: 5px;
+}
+
+.div_limite_categoria_ficha:first-of-type {
+    margin-left: 0;
+}
+
+.div_limite_categoria_ficha textarea {
+    resize: none;
+    height: 30px;
+    border: none;
+    background-color: var(--ton_medio);
+    border-radius: 2px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 33px;
+    overflow: hidden;
+    color: whitesmoke;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+
+#div_limite_espacos_ficha {
+    justify-content: space-between;
+    height: 100%;
+}
+
+#itens_inventario_ficha {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#cabeçalho_itens_inventario_ficha {
+    margin-bottom: 5px;
+    margin-top: 1px;
+}
+
+.linha_inventario {
+    display: grid;
+    width: 95%;
+    height: fit-content;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2px;
+}
+
+.linha_inventario span {
+    color: whitesmoke;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    text-align: center;
+    width: 95%;
+}
+
+#cabeçalho_itens_inventario_ficha span {
+    font-size: 16px;
+}
+
+.linha_inventario_item span {
+    font-size: 14px;
+    border-bottom: 2px solid var(--escuro_intenso);
+    font-weight: 600;
+}
+
+.linha_inventario_item span:first-of-type {
+    text-align: left;
+    padding-left: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+#div_itens_inventario_ficha {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.linha_inventario_item:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#div_anotacoes_inventario_ficha {
+    height: 38%;
+    width: 95%;
+    background-color: var(--escuro_intenso);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#div_anotacoes_inventario_ficha textarea {
+    border-radius: 10px;
+    width: 85%;
+    background-color: var(--claro_medio);
+    color: var(--escuro_intenso);
+    height: 70%;
+    text-align: left;
+    color: whitesmoke;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 5%;
+    padding-right: 5%;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+#titulo_anotacoes_ficha {
+    grid-template-columns: auto 75px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#titulo_anotacoes_ficha span {
+    grid-column: 1;
+    align-self: self-start;
+    text-align: left;
+    margin-left: 10px;
+    width: 100%;
+}
+
+#titulo_anotacoes_ficha button {
+    grid-column: 2;
+    width: 60px;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    margin-right: 10px;
+    background-color: var(--escuro_intenso);
+    color: var(--vibrante);
+    border: 1px solid var(--vibrante);
+    border-radius: 100px;
+    text-align: center;
+    font-weight: 900;
+    font-family: "Cinzel", Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+    #barra_escolha_seçao_ficha_conteudo {
+        font-size: 13px;
+    }
 }
