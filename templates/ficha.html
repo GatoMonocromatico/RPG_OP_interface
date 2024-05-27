@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=REM:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
     var csrf_token = "{{ csrf_token() }}";
@@ -166,8 +166,14 @@
                     </div>
 
                     <div id="secao_atributos_ficha_defesa">
-                        <span>Defesa:</span>
-                        <span>99</span>
+                        <div>
+                            <span>Defesa:</span>
+                            <span>99</span>
+                        </div>
+                        <div>
+                            <span>NEX:</span>
+                            <span>99%</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -311,7 +317,68 @@
                         </div>
                     </div>
                 </div>
-                <div id="secao_ficha_inventario" style="opacity: 0;z-index: 0">ARAUCARIA JAPONESA</div>
+                <div id="secao_ficha_inventario" style="opacity: 0;z-index: 0">
+                    <div id="div_inventario_ficha">
+                        <div class="titulo">
+                            <span>ㅤㅤInventário</span>
+                            <i class="fa-solid fa-circle-plus fa"></i>
+                        </div>
+                        <div id="secao_inventario_limites_ficha">
+                            <div id="div_limite_categorias_ficha" class="div_limite_generico">
+                                <span class="label_titulo_divisao_inventario_ficha">Limite por Categoria</span>
+                                <div class="limites_de_cada_categoria">
+                                    <div class="div_limite_categoria_ficha">
+                                        <span class="limite_categoria">I</span>
+                                        <textarea readonly>2</textarea>
+                                    </div>
+                                    <div class="div_limite_categoria_ficha">
+                                        <span class="limite_categoria">II</span>
+                                        <textarea readonly>2</textarea>
+                                    </div>
+                                    <div class="div_limite_categoria_ficha">
+                                        <span class="limite_categoria">III</span>
+                                        <textarea readonly>2</textarea>
+                                    </div>
+                                    <div class="div_limite_categoria_ficha">
+                                        <span class="limite_categoria">IV</span>
+                                        <textarea readonly>2</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="div_limite_espacos_ficha" class="div_limite_generico">
+                                <span class="label_titulo_divisao_inventario_ficha">Espaços</span>
+                                <span>222/222</span>
+                            </div>
+                        </div>
+                        <div id="itens_inventario_ficha">
+                            <div id="cabeçalho_itens_inventario_ficha" class="linha_inventario">
+                                <span>Item</span>
+                                <span>Qtd.</span>
+                                <span>Cat.</span>
+                            </div>
+                            <div id="div_itens_inventario_ficha">
+                                <div class="linha_inventario_item linha_inventario">
+                                    <span>Item</span>
+                                    <span>1</span>
+                                    <span>I</span>
+                                </div>
+                                <div class="linha_inventario_item linha_inventario">
+                                    <span>Item</span>
+                                    <span>1</span>
+                                    <span>I</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_anotacoes_inventario_ficha">
+                        <div id="titulo_anotacoes_ficha" class="titulo">
+                            <span>Anotações</span>
+                            <button>Salvar</button>
+                        </div>
+
+                        <textarea id="anotacoes_inventario_ficha" spellcheck="false"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
